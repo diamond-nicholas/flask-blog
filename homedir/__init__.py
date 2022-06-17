@@ -1,5 +1,5 @@
 import os
-
+from . import database
 from flask import Flask
 
 
@@ -29,6 +29,8 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'this shoi works!'
+
+    database.init_app(app)
 
     return app
    
