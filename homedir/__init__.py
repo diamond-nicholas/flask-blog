@@ -1,5 +1,6 @@
 import os
 from . import database
+from . import auth
 from flask import Flask
 
 
@@ -24,13 +25,9 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'this shoi works!'
-
     database.init_app(app)
+    app.register_blueprint(auth.bp)
+
 
     return app
    
